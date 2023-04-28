@@ -3,14 +3,23 @@
   Step 1
   Your info
 
+  # checkValidity
+
   Step 2
   Select plan
+
+  #localStorage the plan
 
   Step 3
   Add-ons
 
+  #css
+  #localStorage
+
   Step 4
   Summary
+
+  #gettingFromLocal
 
   <!-- Sidebar end -->
 

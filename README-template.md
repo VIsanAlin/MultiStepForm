@@ -120,3 +120,6 @@ This is where you can give a hat tip to anyone who helped you out on this projec
 
 For the sliding button :
 https://www.w3schools.com/howto/howto_css_switch.asp
+
+For the checkmark add :
+https://www.w3schools.com/howto/howto_css_custom_checkbox.asp

@@ -151,11 +151,24 @@
     justify-content: center;
     background-color: var(--Alabaster);
     padding: 20px;
+    font-family: UbuntuRegular;
+    color: var(--CoolGray);
   }
 
   .selected {
     background-color: var(--Magnolia);
     border: 1px solid var(--MarineBlue) !important;
+  }
+
+  .billing > p.select {
+    font-family: UbuntuMedium;
+    color: var(--MarineBlue);
+  }
+
+  .freeMonths {
+    font-size: 12px;
+    font-family: UbuntuMedium;
+    color: var(--MarineBlue);
   }
 
   /* W3School */
@@ -201,11 +214,11 @@
   }
 
   input:checked + .slider {
-    background-color: #2196f3;
+    background-color: var(--MarineBlue);
   }
 
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196f3;
+    box-shadow: 0 0 1px var(--MarineBlue);
   }
 
   input:checked + .slider:before {
@@ -247,6 +260,10 @@
     font-size: 14px;
     color: var(--PurplishBlue);
     padding-left: 1rem;
+  }
+
+  .add input:checked {
+    /* background-color: var(--PurplishBlue); */
   }
 
   /* ************************************** */
