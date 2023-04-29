@@ -1,7 +1,6 @@
 // Local Storage
 localStorage.setItem("plan", "Arcade");
 localStorage.setItem("billing", "Monthly");
-localStorage.setItem("Add", JSON.stringify(``));
 
 // Helps to get all the canvas
 let canvas = document.querySelector("#mobile");
@@ -20,13 +19,16 @@ let selectedPlan;
 let selectedPlanAmount;
 
 let thePlan = ["Arcade", "Advanced", "Pro"];
-let monthly = ["$9/mo", "$12/mo", "$15/mo"];
-let yearly = ["$90/yr", "$120/yr", "$150/yr"];
+let monthly = [9, 12, 15];
+let yearly = [90, 120, 150];
 
 // Step 3
 let adds;
 let monthlyAdd = ["$1/mo", "$2/mo", "$2/mo"];
 let yearlyAdd = ["$10/yr", "$20/yr", "$20/yr"];
+
+// Step 4
+let costs;
 
 // Buttons
 const nextStep = document.getElementById("next");
@@ -39,11 +41,10 @@ let s = 1;
 let b = 1;
 
 var addOns = [];
+var addOnsValue = [];
 
 nextStep.addEventListener("click", function () {
   s++;
-  console.log(s);
-  console.log("Next Step button was pressed");
 
   //   Back button appears
   if (s >= 2) {
@@ -67,23 +68,6 @@ nextStep.addEventListener("click", function () {
     // Changing the plan
     plans = document.querySelectorAll("div.plan");
 
-    for (let i = 0; i < plans.length; i++) {
-      plans[i].addEventListener("click", function () {
-        for (j = 0; j < plans.length; j++) {
-          plans[j].classList.remove("selected");
-        }
-        plans[i].classList.add("selected");
-        console.log(plans);
-        // console.log("i clicked the plans", i);
-        localStorage.setItem(
-          "plan",
-          `${plans[i].children[1].children[0].innerHTML}`
-        );
-        // Getting the amount
-        console.log(`${plans[i].children[1].children[1].innerHTML}`);
-      });
-    }
-
     // Changing the Billing from monthly to yearly
     let bill = document.querySelector("div.billing");
     // console.log(`${bill.children[0].classList.add("select")}`);
@@ -98,10 +82,10 @@ nextStep.addEventListener("click", function () {
         // Changing from Monthly to Yearly
 
         for (i = 0; i < 3; i++) {
-          console.log(`${plans[i].children[1].children[1].innerHTML}`);
+          // console.log(`${plans[i].children[1].children[1].innerHTML}`);
           plans[
             i
-          ].children[1].innerHTML = `<p>${thePlan[i]}</p> <p>${yearly[i]}</p>  <p class='freeMonths'>2 months free</p>`;
+          ].children[1].innerHTML = `<p>${thePlan[i]}</p> <p>$${yearly[i]}/yr</p>  <p class='freeMonths'>2 months free</p>`;
         }
       } else if (b % 2 == 1) {
         bill.children[2].classList.remove("select");
@@ -112,10 +96,31 @@ nextStep.addEventListener("click", function () {
           console.log(`${plans[i].children[1].children[1].innerHTML}`);
           plans[
             i
-          ].children[1].innerHTML = `<p>${thePlan[i]}</p> <p>${monthly[i]}</p>`;
+          ].children[1].innerHTML = `<p>${thePlan[i]}</p> <p>$${monthly[i]}/mo</p>`;
         }
       }
     });
+
+    for (let i = 0; i < plans.length; i++) {
+      plans[i].addEventListener("click", function () {
+        for (j = 0; j < plans.length; j++) {
+          plans[j].classList.remove("selected");
+        }
+        plans[i].classList.add("selected");
+        // console.log(plans);
+        // console.log("i clicked the plans", i);
+        localStorage.setItem(
+          "plan",
+          `${plans[i].children[1].children[0].innerHTML}`
+        );
+        localStorage.setItem(
+          "planValue",
+          `${plans[i].children[1].children[1].innerHTML}`
+        );
+        // Getting the amount
+        // console.log(`${plans[i].children[1].children[1].innerHTML}`);
+      });
+    }
   }
 
   // Step 3
@@ -127,15 +132,23 @@ nextStep.addEventListener("click", function () {
     for (i = 0; i < 3; i++) {
       // Changing the amount needed to pay for adds for yearly
       if (`${bill}` === "Yearly") {
-        console.log(`${adds[i].children[2].innerHTML}`);
+        // console.log(`${adds[i].children[2].innerHTML}`);
         adds[i].children[2].innerHTML = `${yearlyAdd[i]}`;
       }
       adds[i].children[0].addEventListener("click", function (e) {
         // console.log(`Input was clicked`);
-        console.log(
-          `${e.target.parentElement.children[1].children[0].innerHTML}`
-        );
-        console.log(`${e.target.parentElement.children[2].innerHTML}`);
+        console.log(`${e.target.checked}`);
+        if (e.target.checked === true) {
+          console.log("Item checked");
+          e.target.parentElement.classList.add("selected");
+        } else if (e.target.checked === false) {
+          console.log("Item unchecked");
+          e.target.parentElement.classList.remove("selected");
+        }
+        // console.log(
+        //   `${e.target.parentElement.children[1].children[0].innerHTML}`
+        // );
+        // console.log(`${e.target.parentElement.children[2].innerHTML}`);
         // e.target.classList.add("selected");
         // localStorage.setItem(
         //   "Add",
@@ -144,14 +157,64 @@ nextStep.addEventListener("click", function () {
         addOns.push(
           `${e.target.parentElement.children[1].children[0].innerHTML}`
         );
+        addOnsValue.push(`${e.target.parentElement.children[2].innerHTML}`);
 
         console.log(`${addOns}`);
+        console.log(`${addOnsValue}`);
       });
     }
   }
-
+  localStorage.AddValue = JSON.stringify(addOnsValue);
   localStorage.Add = JSON.stringify(addOns);
   // Step 4
+  if (s === 4) {
+    nextStep.innerHTML = "Confirm";
+    nextStep.classList.remove("next");
+    nextStep.classList.add("confirm");
+    let finalPlan = localStorage.getItem("plan");
+    let finalPlanValue = localStorage.getItem("planValue");
+    let finalBill = localStorage.getItem("billing");
+    let finalAdds = JSON.parse(localStorage.getItem("Add"));
+    let finalAddsValue = JSON.parse(localStorage.getItem("AddValue"));
+    let adduri = "";
+
+    costs = document.querySelector("div.costs");
+    console.log(costs.children);
+
+    // Plan
+
+    costs.children[0].innerHTML = `
+      <div> <span class="finalPlan"> ${finalPlan}(Yearly)</span> <p> Change </p> 
+      </div> <p> ${finalPlanValue} </p>`;
+
+    // Add
+    for (i = 0; i < finalAdds.length; i++) {
+      adduri += `<div class="chosenAdd"> <p>${finalAdds[i]}</p> <p>${finalAddsValue[i]}</p> </div> `;
+    }
+    costs.children[1].innerHTML = adduri;
+    // Total
+    const total = [finalPlanValue, finalAddsValue];
+    let fpv = Number(finalPlanValue.match(/\d+/));
+    let fad = "";
+    let fadNr = "";
+    for (i = 0; i < finalAddsValue.length; i++) {
+      fad = finalAddsValue[i].match(/(\d+)/);
+      fadNr += fad[i];
+      console.log(fad);
+      console.log(fadNr);
+    }
+    // let fav = finalAddsValue.match(/\d+/);
+
+    console.log(fad);
+    total = fpv + fadNr;
+    console.log(total);
+    costs.children[2].children[1].innerHTML = "";
+  }
+
+  // Thank you
+  if (s === 5) {
+    nextStep.classList.add("hidden");
+  }
 });
 
 backStep.addEventListener("click", function () {
@@ -169,10 +232,26 @@ backStep.addEventListener("click", function () {
   canvasChildren[s - 1].classList.remove("notDisplaying");
   canvasChildren[s].classList.add("notDisplaying");
 
+  if (s === 3) {
+    for (i = 0; i < adds.length; i++) {
+      adds[i].classList.remove("selected");
+      adds[i].children[0].checked = false;
+    }
+    addOns = [];
+    addOnsValue = [];
+  }
+
   if (s === 4) {
+    nextStep.innerHTML = "Confirm";
+    nextStep.classList.remove("hidden");
+    nextStep.classList.remove("next");
+    nextStep.classList.add("confirm");
   } else {
     children[s - 1].classList.add("stepsColor");
     children[s].classList.remove("stepsColor");
+    nextStep.innerHTML = "Next Step";
+    nextStep.classList.add("next");
+    nextStep.classList.remove("confirm");
   }
   ////////////////////////////////////////
 });

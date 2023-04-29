@@ -1,3 +1,5 @@
+
+
 <!-- Sidebar start -->
 
   Step 1
@@ -8,7 +10,7 @@
   Step 2
   Select plan
 
-  #localStorage the plan
+ ////// Local Storage the Value of plan /////
 
   Step 3
   Add-ons
@@ -18,8 +20,6 @@
 
   Step 4
   Summary
-
-  #gettingFromLocal
 
   <!-- Sidebar end -->
 

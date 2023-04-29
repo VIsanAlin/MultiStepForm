@@ -292,6 +292,11 @@
     font-size: 14px;
   }
 
+  .chosenAddV {
+    display: flex;
+    flex-direction: column;
+  }
+
   .chosenAdd {
     display: flex;
     justify-content: space-between;
@@ -367,6 +372,15 @@
     border-radius: 5px;
     color: var(--Alabaster);
     background-color: var(--MarineBlue);
+    font-family: UbuntuRegular;
+  }
+
+  .confirm {
+    height: 35px;
+    width: 100px;
+    border-radius: 5px;
+    color: var(--Alabaster);
+    background-color: var(--PurplishBlue);
     font-family: UbuntuRegular;
   }
 
