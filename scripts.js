@@ -40,8 +40,8 @@ let s = 1;
 // Billing is monthly (and if changed to yearly)
 let b = 1;
 
-var addOns = [];
-var addOnsValue = [];
+let addOns = [];
+let addOnsValue = [];
 
 nextStep.addEventListener("click", function () {
   s++;
@@ -166,6 +166,9 @@ nextStep.addEventListener("click", function () {
   }
   localStorage.AddValue = JSON.stringify(addOnsValue);
   localStorage.Add = JSON.stringify(addOns);
+
+  addOns = [];
+  addOnsValue = [];
   // Step 4
   if (s === 4) {
     nextStep.innerHTML = "Confirm";
@@ -182,10 +185,15 @@ nextStep.addEventListener("click", function () {
     console.log(costs.children);
 
     // Plan
-
-    costs.children[0].innerHTML = `
+    if (finalBill === "Yearly") {
+      costs.children[0].innerHTML = `
       <div> <span class="finalPlan"> ${finalPlan}(Yearly)</span> <p> Change </p> 
       </div> <p> ${finalPlanValue} </p>`;
+    } else {
+      costs.children[0].innerHTML = `
+      <div> <span class="finalPlan"> ${finalPlan}(Monthly)</span> <p> Change </p> 
+      </div> <p> ${finalPlanValue} </p>`;
+    }
 
     // Add
     for (i = 0; i < finalAdds.length; i++) {
@@ -195,20 +203,24 @@ nextStep.addEventListener("click", function () {
     // Total
     const total = [finalPlanValue, finalAddsValue];
     let fpv = Number(finalPlanValue.match(/\d+/));
-    let fad = "";
-    let fadNr = "";
+    let fad = 0;
+    let fadNr = 0;
     for (i = 0; i < finalAddsValue.length; i++) {
       fad = finalAddsValue[i].match(/(\d+)/);
-      fadNr += fad[i];
+      fadNr += Number(fad[0]);
       console.log(fad);
       console.log(fadNr);
     }
     // let fav = finalAddsValue.match(/\d+/);
 
     console.log(fad);
-    total = fpv + fadNr;
-    console.log(total);
-    costs.children[2].children[1].innerHTML = "";
+    let totalPay = fpv + fadNr;
+    console.log(totalPay);
+    if (finalBill === "Yearly") {
+      costs.children[2].children[1].innerHTML = `$${totalPay}/yr`;
+    } else {
+      costs.children[2].children[1].innerHTML = `$${totalPay}/mo`;
+    }
   }
 
   // Thank you
@@ -232,15 +244,19 @@ backStep.addEventListener("click", function () {
   canvasChildren[s - 1].classList.remove("notDisplaying");
   canvasChildren[s].classList.add("notDisplaying");
 
+  if (s === 2) {
+    for (i = 0; i < adds.length; i++) {
+      adds[i].classList.remove("selected");
+      adds[i].children[0].checked = false;
+    }
+  }
+
   if (s === 3) {
     for (i = 0; i < adds.length; i++) {
       adds[i].classList.remove("selected");
       adds[i].children[0].checked = false;
     }
-    addOns = [];
-    addOnsValue = [];
   }
-
   if (s === 4) {
     nextStep.innerHTML = "Confirm";
     nextStep.classList.remove("hidden");

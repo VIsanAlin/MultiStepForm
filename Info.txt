@@ -1,0 +1,6 @@
+Desktop : 
+
+width : 1440 
+height : 580
+
+sidebar : 274 / 568 

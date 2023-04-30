@@ -394,6 +394,416 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .mobile {
+    display: none;
+  }
+
+  body {
+    background-color: var(--Magnolia);
+  }
+
+  .desktop {
+    display: flex;
+    max-width: 1440px;
+    height: 580px;
+  }
+
+  .canvas {
+    background-color: var(--White);
+    display: flex;
+    height: 580px;
+    padding-top: 1rem;
+    margin: auto;
+    margin-top: 1rem;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    padding-top: 2rem;
+    background-image: url(./assets/images/bg-sidebar-desktop.svg);
+    background-repeat: no-repeat;
+    width: 274px;
+    height: 568px;
+  }
+
+  .steps > div {
+    display: flex;
+    padding-bottom: 1.5rem;
+  }
+
+  .steps > div > p {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid white;
+    border-radius: 20px;
+  }
+
+  .steps > div > div {
+    margin-left: 1rem;
+  }
+
+  .steps > div > div > :nth-child(1) {
+    font-family: UbuntuRegular;
+    color: var(--CoolGray);
+  }
+
+  .steps > div > div > :nth-child(2) {
+    font-family: UbuntuRegular;
+    color: white;
+  }
+
+  .stepsColor {
+    background-color: var(--LightBlue);
+    border: 1px solid var(--PastelBlue);
+    color: var(--MarineBlue) !important;
+  }
+
+  /* First Step */
+
+  .personalInfo {
+    margin-right: 3rem;
+  }
+
+  div > form {
+    padding: 0.5rem;
+  }
+
+  div > form > legend {
+    font-family: UbuntuBold;
+    color: var(--MarineBlue);
+    font-size: 25px;
+  }
+
+  div > form > span {
+    font-family: UbuntuRegular;
+    color: var(--CoolGray);
+    font-size: 16px;
+  }
+
+  .personalInfo > form > label {
+    font-family: UbuntuMedium;
+    color: var(--MarineBlue);
+    font-size: 16px;
+  }
+
+  .personalInfo > form > input {
+    width: 100%;
+    height: 2rem;
+    font-size: 16px;
+    color: var(--CoolGray);
+    border: 1px solid var(--LightGray);
+    border-radius: 5px;
+    margin-bottom: 5%;
+  }
+
+  /* ************************************* */
+  /* Second Step */
+
+  .selectPlan {
+    margin-right: 3rem;
+  }
+
+  .selectPlan > form > div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .plan {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--LightGray);
+    border-radius: 10px;
+    width: 30%;
+    margin: auto;
+    margin-bottom: 5%;
+  }
+
+  .plan > img {
+    width: 50%;
+    padding: 0.5rem;
+    padding-bottom: 2rem;
+    padding-right: 2rem;
+  }
+
+  .plan > div {
+    padding: 0.5rem;
+  }
+
+  .plan > div > :first-child {
+    font-family: UbuntuBold;
+    color: var(--MarineBlue);
+    padding-bottom: 5px;
+  }
+
+  .plan > div > :nth-child(2) {
+    color: var(--CoolGray);
+  }
+
+  .billing {
+    display: flex;
+    justify-content: center;
+    background-color: var(--Alabaster);
+    padding: 20px;
+    font-family: UbuntuRegular;
+    color: var(--CoolGray);
+  }
+
+  .selected {
+    background-color: var(--Magnolia);
+    border: 1px solid var(--MarineBlue) !important;
+  }
+
+  .billing > p.select {
+    font-family: UbuntuMedium;
+    color: var(--MarineBlue);
+  }
+
+  .freeMonths {
+    font-size: 12px;
+    font-family: UbuntuMedium;
+    color: var(--MarineBlue);
+  }
+
+  /* W3School */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    margin-left: 6%;
+    margin-right: 6%;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--MarineBlue);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--MarineBlue);
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px var(--MarineBlue);
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+
+  /* ************************************** */
+
+  /* Third Step */
+
+  .addOns {
+    margin-right: 3rem;
+  }
+
+  .add {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--LightGray);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 5%;
+  }
+
+  .add > div {
+    width: 80%;
+    margin-left: 5%;
+  }
+
+  .add > div > :first-child {
+    font-family: UbuntuBold;
+    color: var(--MarineBlue);
+    padding-bottom: 5px;
+  }
+
+  .add > div > :nth-child(2) {
+    font-size: 14px;
+    color: var(--CoolGray);
+  }
+
+  .add > p {
+    font-size: 14px;
+    color: var(--PurplishBlue);
+    padding-left: 1rem;
+  }
+
+  .add input:checked {
+    /* background-color: var(--PurplishBlue); */
+  }
+
+  /* ************************************** */
+
+  /* Forth Step */
+
+  .finish {
+    margin-right: 3rem;
+  }
+
+  .chosenPlan {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--Magnolia);
+    padding: 5%;
+    border-bottom: 1px solid var(--LightGray);
+  }
+
+  .chosenPlan > div > span {
+    font-family: UbuntuBold;
+    color: var(--MarineBlue);
+    font-size: 14px;
+  }
+
+  .chosenPlan > p {
+    display: flex;
+    align-items: center;
+    font-family: UbuntuBold;
+    color: var(--MarineBlue);
+    font-size: 14px;
+  }
+
+  .chosenAddV {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chosenAdd {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--Magnolia);
+    padding: 5%;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+  }
+
+  .chosenAdd > :nth-child(2n-1) {
+    color: var(--CoolGray);
+  }
+
+  .chosenAdd > :nth-child(2n) {
+    color: var(--MarineBlue);
+    font-family: UbuntuMedium;
+    font-size: 15px;
+  }
+
+  .total {
+    display: flex;
+    justify-content: space-between;
+    padding: 5%;
+    color: var(--CoolGray);
+  }
+
+  .total > :nth-child(2) {
+    font-family: UbuntuBold;
+    color: var(--PurplishBlue);
+  }
+
+  /* Finish */
+
+  .thankyou {
+    margin-right: 3rem;
+    width: 400px;
+  }
+
+  .thankyou > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40%;
+  }
+
+  .thankyou > form > img {
+    width: 20%;
+    margin-bottom: 1rem;
+  }
+
+  .thankyou > form > span {
+    font-size: 16px;
+    font-family: UbuntuRegular;
+    text-align: center;
+  }
+
+  /* ************************************** */
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 3rem;
+    height: 70px;
+  }
+
+  .back {
+    padding-left: 1rem;
+    border: none;
+    color: var(--CoolGray);
+    background-color: var(--Alabaster);
+    font-family: UbuntuRegular;
+  }
+
+  .next {
+    height: 35px;
+    width: 100px;
+    border-radius: 5px;
+    color: var(--Alabaster);
+    background-color: var(--MarineBlue);
+    font-family: UbuntuRegular;
+  }
+
+  .confirm {
+    height: 35px;
+    width: 100px;
+    border-radius: 5px;
+    color: var(--Alabaster);
+    background-color: var(--PurplishBlue);
+    font-family: UbuntuRegular;
+  }
+
+  .notDisplaying {
+    display: none;
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
 }
 
 .attribution {
