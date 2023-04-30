@@ -47,5 +47,4 @@ Multi-step Form desktop screenshot
 
 ### Mobile version
 
-Multi-step Form mobile screenshot
 ![Design preview for the Multi-step form coding challenge](./design/mobileV1.png)
