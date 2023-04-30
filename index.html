@@ -174,29 +174,29 @@
 
     <div class="desktop" id="desktop">
       <div class="canvas">
-        <div class="steps" id="steps">
-          <div>
+        <div class="steps" id="stepsDesktop">
+          <div class="step">
             <p class="stepsColor">1</p>
             <div>
               <p>STEP 1</p>
               <p>YOUR INFO</p>
             </div>
           </div>
-          <div>
+          <div class="step">
             <p>2</p>
             <div>
               <p>STEP 2</p>
               <p>SELECT PLAN</p>
             </div>
           </div>
-          <div>
+          <div class="step">
             <p>3</p>
             <div>
               <p>STEP 3</p>
               <p>ADD-ONS</p>
             </div>
           </div>
-          <div>
+          <div class="step">
             <p>4</p>
             <div>
               <p>STEP 4</p>
@@ -205,7 +205,7 @@
           </div>
         </div>
         <div>
-          <div class="personalInfo">
+          <div class="personalInfo canvasD">
             <form action="">
               <legend for="">Personal info</legend>
               <br />
@@ -239,7 +239,7 @@
             </form>
           </div>
 
-          <div class="selectPlan notDisplaying">
+          <div class="selectPlan canvasD notDisplaying">
             <form action="">
               <legend for="">Select your plan</legend>
               <br />
@@ -273,7 +273,7 @@
               <div class="billing">
                 <p class="select">Monthly</p>
                 <label class="switch">
-                  <input type="checkbox" id="checkbox" />
+                  <input type="checkbox" id="checkboxDesktop" />
                   <span class="slider"></span>
                 </label>
                 <p>Yearly</p>
@@ -281,14 +281,14 @@
             </form>
           </div>
 
-          <div class="addOns notDisplaying">
+          <div class="addOns canvasD notDisplaying">
             <form action="">
               <legend>Pick add-ons</legend>
               <br />
               <span>Add-ons help enhance your gaming experience.</span>
               <br />
               <br />
-              <div class="add">
+              <div class="add addDesktop">
                 <input type="checkbox" class="checkbox" />
                 <div>
                   <p>Online services</p>
@@ -296,7 +296,7 @@
                 </div>
                 <p>+$1/mo</p>
               </div>
-              <div class="add">
+              <div class="add addDesktop">
                 <input type="checkbox" class="checkbox" />
                 <div>
                   <p>Larger storage</p>
@@ -304,7 +304,7 @@
                 </div>
                 <p>+$2/mo</p>
               </div>
-              <div class="add">
+              <div class="add addDesktop">
                 <input type="checkbox" class="checkbox" />
                 <div>
                   <p>Customizable profile</p>
@@ -315,14 +315,14 @@
             </form>
           </div>
 
-          <div class="finish notDisplaying">
+          <div class="finish canvasD notDisplaying">
             <form action="">
               <legend>Finishing up</legend>
               <br />
               <span>Double-check everything looks OK before confirming.</span>
               <br />
               <br />
-              <div class="costs">
+              <div class="costs costsDesktop">
                 <div class="chosenPlan">
                   <div>
                     <span class="finalPlan">Arcade(Monthly)</span>
@@ -339,13 +339,13 @@
             </form>
           </div>
 
-          <div class="thankyou notDisplaying">
+          <div class="thankyou canvasD notDisplaying">
             <form action="">
               <img src="./assets/images/icon-thank-you.svg" alt="" />
               <legend>Thank you!</legend>
               <br />
-              <span>
-                Thanks for confirming your subscription! We hope you have fun
+              <span
+                >Thanks for confirming your subscription! We hope you have fun
                 using our platform. If you ever need support, please fell free
                 to email us at support@loremgaming.com
               </span>
@@ -354,8 +354,10 @@
 
           <br />
           <div class="buttons">
-            <button class="back hidden" id="back">Go Back</button>
-            <button type="button" class="next" id="next">Next Step</button>
+            <button class="back hidden" id="backDesktop">Go Back</button>
+            <button type="button" class="next" id="nextDesktop">
+              Next Step
+            </button>
           </div>
         </div>
       </div>
