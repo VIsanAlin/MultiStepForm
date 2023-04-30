@@ -1,6 +1,15 @@
-Desktop : 
+// TO DO LATER //
 
-width : 1440 
-height : 580
+Mobile/Destkop -> BUG -> Back and forth localStorage for adds + values for plans
+               -> Personal Info Checked 
+               -> Change button to swap to Step 2
+Desktop -> 
+    Layout -> Look more alike from design 
+        - Left Image 
+        - Padding between name / email / phone 
+        - Better layout for plans
 
-sidebar : 274 / 568 
+///////////////////
+
+REFACTORING HTML + CSS + JAVASCRIPT
+
